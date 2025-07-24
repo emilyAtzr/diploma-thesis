@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: cml-api-gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: patient-service
+            uri: lb://cml-patient-management
+            predicates:
+              - Path=/ais/desktop/domain/patient/**
+          - id: file-service
+            uri: lb://cml-file-management
+            predicates:
+              - Path=/ais/desktop/**
+
+server:
+  port: 8080

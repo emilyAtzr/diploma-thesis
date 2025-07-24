@@ -1,0 +1,191 @@
+% --- E I N L E I T U N G ---
+
+Nachdem in der Einleitung \ref{Allgemeines} ausführlich erläutert wird, warum eine durchdachte Softwarearchitektur von so großer Bedeutung ist, wird anschließend detaillierter auf die Anforderungen einer Software eingegangen. Diese sind entscheidend für den Erfolg eines Softwaresystems.
+
+Grundsätzlich wird angenommen, dass Anforderungen dazu dienen, ein spezifisches Problem zu lösen.
+Diese Definition lässt sich auch auf die Anforderungen eines Softwaresystems übertragen. \\ 
+Der IEEE-Standard 729 definiert Softwareanforderungen folgendermaßen: 
+
+\begin{quote}
+    ``A condition or capability needed by a user to solve a problem or achieve an objective.``
+    \cite{EA:Web05}
+\end{quote}
+
+Anforderungen werden von verschiedenen Beteiligten wie Benutzern, Kunden, Entwicklern und Business Analysts definiert.
+
+Zusammengefasst dienen Anforderungen dazu, festzulegen, \textbf{welche Probleme die zu entwickelnde Software lösen soll}. Die daraus gewonnen Informationen geben allen Beteiligten einen einheitlichen Überblick und dienen als Entscheidungsgrundlage für einen Architekturstil. 
+Allerdings kann es vorkommen, dass die gewählte Architektur zu einem späteren Zeitpunkt nicht mehr optimal ist, da im Laufe des Projekts unerwartete Probleme auftreten können. \\
+\cite{EA:Web04, EA:Web05} \cite[S. 13-16]{EA:Book02}
+
+Dies ist besonders relevant bei \textbf{agilen Vorgehensweisen}, bei denen die Zufriedenheit des Kunden im Vordergrund steht. 
+\textbf{Laufende Anpassungen} werden vorgenommen, um den Erwartungen des Kunden gerecht zu werden, was bedeutet, dass sich die Anforderungen im Laufe der Zeit ändern können.
+\cite{EA:Web06}
+
+Grundsätzlich lassen sich Anforderungen in zwei Haupttypen unterteilen:
+
+\begin{itemize}
+    \item Funktionale Anforderungen
+    \item Nicht-funktionale Anforderungen
+\end{itemize}
+
+Diese werden im Folgenden genauer erklärt. Anschließend erfolgt eine Anforderungsanalyse für das Projekt CGM MAXX LITE,
+die dabei helfen soll, einen passenden Architekturstil für das Projekt zu finden, um die Entwicklung, Bereitstellung und Wartung so einfach und kostengünstig wie möglich zu gestalten.
+
+
+% --- F U N K T I O N A L E   A N F O R D E R U N G E N ---
+
+\subsection{Funktionale Anforderungen} \label{Funktionale Anforderungen}
+
+Der Begriff \glqq funktionale Anforderungen\grqq\ deutet bereits darauf hin, dass es um die konkrete Funktionalität der Software geht. Diese Anforderungen definieren, \textbf{welche Aufgaben ein System erfüllen muss}. Genauer gesagt handelt es sich um sichtbare Funktionen und Prozesse, die der Benutzer sehen und verwenden kann. Der Benutzer führt bestimmte Aktionen durch, die eine festgelegte Operation auslösen und als Antwort eine entsprechende Reaktion des Systems liefern.
+
+Da funktionale Anforderungen immer spezifisch auf die zu entwickelnde Software zugeschnitten sind, \textbf{können} sie \textbf{je nach Projekt stark variieren}. Der genaue Inhalt dieser Anforderungen hängt davon ab, welche Ziele die Software verfolgt und welche Probleme sie lösen soll. Im Abschnitt \ref{Projektbezug - Anforderungsanalyse} wird näher auf die funktionalen Anforderungen des Softwareprojekts CGM MAXX LITE eingegangen.
+
+Funktionale Anforderungen werden im \textbf{agilen Entwicklungsprozess} häufig in Form von \textbf{User Stories} formuliert. Diese beschreiben aus der Perspektive einer bestimmten Rolle, welche Funktionen umgesetzt werden sollen.
+\cite{EA:Web04, EA:Web07}
+
+
+% --- N I C H T - F U N K T I O N A L E   A N F O R D E R U N G E N ---
+
+\subsection{Nicht-funktionale Anforderungen} \label{Nicht-funktionale Anforderungen}
+
+Neben den funktionalen Anforderungen gibt es auch die nicht-funktionalen Anforderungen, die auch als architektonische Eigenschaften bezeichnet werden. Dabei handelt es sich um bestimmte Kriterien, die erfüllt sein müssen, \textbf{damit ein Softwaresystem erfolgreich betrieben werden kann}.
+
+Grundsätzlich werden diese Anforderungen in bestimmten Dokumenten angeführt. Allerdings gibt es einige Eigenschaften, welche zwar essentiell für den Projekterfolg sind, aber nicht explizit genannt werden, da davon ausgegangen wird, dass die Software verfügbar, verlässlich und sicher ist.
+
+Diese Anforderungen können für die unterschiedlichsten Bereiche der Software definiert werden.
+Um ein besseres Verständnis für die verschiedenen Eigenschaften zu bekommen, können diese in Kategorien unterteilt werden.
+Anzumerken ist, dass es hierbei ebenfalls keine allgemein gültige Aufteilung gibt. 
+
+Allerdings ist es nahezu unmöglich, all diese Anforderungen wirklich zu erfüllen, da sich die einzelnen Eigenschaften gegenseitig beeinflussen können. \\
+\cite{EA:Web04, EA:Web05} \cite[S. 55-60]{EA:Book02}
+
+
+    % --- B E T R I E B S R E L E V A N T E   A N F O R D E R U N G E N ---
+    
+    \subsubsection{Betriebsrelevante Anforderungen}
+    
+    Für den Betrieb einer Software sind bestimmte Eigenschaften von großer Bedeutung. Dazu zählt insbesondere die \textbf{Verfügbarkeit}, die angibt, wann und wie lange das System zur Verfügung stehen muss und welche Maßnahmen im Falle eines Ausfalls ergriffen werden. Ein weiterer wichtiger Aspekt ist die \textbf{Performance}, die durch die maximale Antwortzeit\footnote{Zeitspanne zwischen Aktion eines Nutzers und der Antwort des Systems} definiert wird.
+    Hierbei muss berücksichtigt werden, dass die Reaktionszeit der Applikation je nach Nutzung und Anzahl der Benutzer stark variieren kann. Besonders in Systemen mit einer hohen Benutzerzahl kann es zu Verzögerungen kommen.
+    
+    Weitere wesentliche Aspekte sind die \textbf{Wiederherstellbarkeit, Verlässlichkeit und die Sicherheit} des Systems.
+    Vor allem bei Applikationen, bei denen Menschenleben gefährdet werden könnten, ist besondere Vorsicht geboten.
+    Es muss nicht zwangsläufig ein vollständiger Systemausfall vorliegen. Alleine das bloße Fehlen oder der Verlust von wichtigen Informationen kann zu ernsthaften Komplikationen führen. \\
+    Grundsätzlich sollte bei jeder Software auf Sicherheit geachtet werden, um unbefugten Zugriff zu verhindern. 
+    Der potenzielle Schaden steigt mit der Anzahl der Nutzer, die auf das System zugreifen, sowie mit der Menge an verwalteten Daten. Dies gilt insbesondere für sensible und personenbezogene Daten. \\
+    \cite[S. 58-59]{EA:Book02} \cite{EA:Web08}
+    
+    Aus diesem Grund ist es sinnvoll, bereits in der Anforderungsanalyse die Wiederherstellbarkeit des Systems zu berücksichtigen. Klare Anforderungen, die definieren, wie das System im Falle eines Ausfalls oder Fehlers reagieren soll, helfen, die Software schnell und effektiv wiederherzustellen. Diese Maßnahmen tragen dazu bei, die Zuverlässigkeit des Systems zu gewährleisten und es auch nach Störungen weiterhin funktionsfähig zu halten.
+    \cite{EA:Web09}
+    
+    
+    % --- S T R U K T U R E L L E   A N F O R D E R U N G E N ---
+    
+    \subsubsection{Strukturelle Anforderungen}
+    
+    Auch der Code darf nicht außer Acht gelassen werden, weshalb Kriterien festgelegt werden, um die Qualität der Software sicherzustellen. Dazu gehören Eigenschaften wie die \textbf{Erweiterbarkeit}, die eine wichtige Rolle spielt, wenn das System in Zukunft um weitere Funktionen ergänzt werden soll.
+    
+    Die \textbf{Wiederverwendbarkeit} bestimmter Komponenten kann in einigen Anwendungsfällen von Bedeutung sein, ebenso wie die \textbf{Lokalisierung\footnote{Unterstützung verschiedener Sprachen, Maßeinheiten und Währungen}} für größere Unternehmen, die in mehreren Ländern tätig sind.
+    
+    Wie bereits im Abschnitt \ref{Herausforderungen und Probleme} erwähnt, muss auch die \textbf{Wartung} berücksichtigt werden, um die Kosten niedrig zu halten. Dabei muss überlegt werden, wie Änderungen effizient umgesetzt werden können, um das System zu verbessern.
+    
+    Bei der Entwicklung eines Prototyps kann es ebenfalls wichtig sein, die \textbf{Portabilität} zu beachten, speziell dann, wenn Teile der Software in ein bereits bestehendes System integriert werden sollen, das auf einer anderen Technologie basiert. \\
+    \cite[S. 59-60]{EA:Book02}
+    
+    
+    % --- B E R E I C H S Ü B E R G R E I F E N D E   A N F O R D E R U N G E N ---
+    
+    \subsubsection{Bereichsübergreifende Anforderungen}
+    
+    Es gibt viele weitere Kriterien, die das Design der Software maßgeblich beeinflussen können.
+    Dazu gehören die \textbf{Zugänglichkeit} in Bezug auf Barrierefreiheit, sowie bestimmte Sicherheitsaspekte wie die \textbf{Authentifizierung und Autorisierung}.
+    Auch \textbf{rechtliche Aspekte} müssen berücksichtigt werden, etwa die Datenschutz-\\Grundverordnung (DSGVO).
+    Zudem spielt \textbf{Usability} eine große Rolle, damit die Anwender/innen bedenkenlos mit der Software arbeiten können, ohne viel Zeit damit zu verbringen, nach den verfügbaren Funktionalitäten zu suchen. \\
+    \cite[S. 60]{EA:Book02}
+    
+    
+    % --- Ü B E R L E I T U N G ---
+    
+    \subsubsection{Überleitung}
+    
+    Im folgenden Abschnitt werden die Anforderungen des Projekts CGM MAXX LITE genauer analysiert.
+    Hierbei werden sowohl die Erwartungen des Auftraggebers, wie sie im Pflichtenheft festgelegt sind, als auch die aus der Anwendersicht formulierten Anforderungen, die als User Stories in Jira dokumentiert sind, berücksichtigt.
+    Ziel ist es, die Eigenschaften zu definieren, die das System schlussendlich erfüllen soll, um sowohl den Auftraggeber zufriedenzustellen als auch den Anforderungen der Anwender/innen gerecht zu werden.
+    Außerdem sollen die daraus gewonnenen Erkenntnisse als Entscheidungsgrundlage für die Auswahl eines Architekturstils dienen, worauf im Unterkapitel \ref{Architekturstile} näher eingegangen wird.
+    
+    \clearpage
+
+
+% --- P R O J E K T B E Z U G ---
+
+\subsection{Projektbezug - Anforderungsanalyse} \label{Projektbezug - Anforderungsanalyse}
+
+Bevor die Anforderungen des Projekts CGM MAXX LITE genauer unter die Lupe genommen werden, muss zunächst die Frage geklärt werden, worum es sich hierbei überhaupt handelt. Alle Informationen, die in diesem Abschnitt genannt werden, stammen von der Website des Auftraggebers, aus dem Pflichtenheft und den User Stories und Tasks in Jira.
+Im Folgenden wird beschrieben, wie der Projektauftrag zustande kam und was genau durch dieses Projekt erreicht werden soll. 
+
+
+% --- A U S G A N G S S I T U A T I O N ---
+
+\subsubsection{Ausgangssituation}
+
+Der Name verrät bereits, von welchem Unternehmen der Projektauftrag stammt. Dieses heißt \textbf{CGM Arztsysteme Österreich GmbH} und ist spezialisiert auf Software im Gesundheitssektor. Dabei ist \textbf{CGM MAXX} eines ihrer Hauptprodukte, ein Arztinformationssystem, das sowohl von Wahl- als auch von Kassenärzten genutzt wird.
+
+Um etwas genauer zu sein, handelt es sich um eine webbasierte Arztsoftware, die diversen Ärzten digitale Dienste zur Verfügung stellt, wie die Patientenverwaltung, Befund-Dokumentierung, Terminplanung und vieles mehr.
+Allerdings ist diese Applikation \textbf{nur für den Desktop-Betrieb optimiert} und basiert auf veralteten Technologien.
+\cite{EA:Web10}
+
+
+% --- S O L L - S I T U A T I O N ---
+
+\subsubsection{Soll-Situation}
+
+Hier setzt das Projekt \textbf{CGM MAXX LITE} an. Ziel ist es, die Anwendung auch \textbf{auf mobilen Geräten} wie Smartphones und Tablets bereitzustellen, um \textbf{alltägliche Arbeitsabläufe zu erleichtern}.
+
+Dabei soll ein Prototyp für ein mobiles Frontend entwickelt werden, das die wichtigsten Funktionalitäten von CGM MAXX enthält und zusätzlich Funktionen zur Foto- und Audioaufnahme bietet, um die Vorzüge mobiler Geräte zu nutzen.
+Durch die Bereitstellung einer Swagger-Dokumentation, die die einzelnen Schnittstellen der vorhandenen Software genau beschreibt, soll ein Demo-Backend implementiert werden, damit dieses gegebenenfalls mit dem bereits bestehenden Backend von CGM MAXX ausgetauscht und getestet werden kann. \\
+Der Fokus liegt dabei auf einer \textbf{benutzerfreundlichen Oberfläche für mobile Endgeräte}. Zudem soll die Software so gestaltet werden, dass sie für zukünftige Erweiterungen offen bleibt, um die Weiterentwicklung und Wartung möglichst effizient und kostengünstig zu gestalten.
+
+
+    % --- F U N K T I O N A L E   A N F O R D E R U N G E N ---
+
+    \subsubsection{Funktionale Anforderungen}
+    
+    Was genau unter funktionalen Anforderungen zu verstehen ist, kann im Abschnitt \ref{Funktionale Anforderungen} nachgelesen werden.
+    Kurz gesagt geht es darum, welche Funktionalitäten die Software bieten soll. Zur Definition der funktionalen Anforderungen werden die User Stories und Tasks aus Jira herangezogen.
+    
+    Da es zu unübersichtlich wäre, jede einzelne User Story und jeden Task aufzulisten, folgt eine kurze Übersicht der Funktionalitäten, die die Software grundsätzlich erfüllen soll:
+    \begin{itemize}
+        \item Dark-/Light Mode
+        \item Patientenliste
+        \item Patientensuche
+        \item Aufnahme und Darstellung von Bildern
+        \item Aufnehmen und Abspielen von Audiodateien
+    \end{itemize}
+    
+    Da diese Auflistung noch zu ungenau ist, um ein klares Bild zu vermitteln, werden die grundlegenden Funktionalitäten der zu entwickelnden Software nun näher beschrieben.
+    
+    Sobald die Applikation gestartet wird, soll eine \textbf{Liste der Patient/innen angezeigt} werden, die am heutigen Tag einen Termin haben. Dies ermöglicht es dem/der Anwender/in, schnell an Informationen zu gelangen, ohne lange suchen zu müssen. \\
+    Des Weiteren soll es möglich sein, \textbf{Personen anhand ihres Namens oder ihrer Sozialversicherungsnummer zu suchen}. Diese können auf der Startseite angepinnt werden, falls öfter auf die Daten einer bestimmten Person zugegriffen werden muss. \\ 
+    Ein weiterer wichtiger Aspekt ist eine \textbf{Navigationsleiste}, die es dem/der Anwender/in ermöglicht, schnell durch die Applikation zu navigieren. Sie soll so platziert sein, dass sie einfach mit einer Hand erreicht werden kann, um die Benutzerfreundlichkeit zu erhöhen. \\
+    Wie bereits erwähnt, sollen die Vorteile mobiler Geräte genutzt werden, weshalb es möglich sein soll, \textbf{Bilder von medizinischen Befunden} direkt \textbf{in der Patientenakte} zu \textbf{hinterlegen}. Dadurch kann sich der/die Arzt/Ärztin auf den/die Patient/in konzentrieren, ohne zu viel Zeit mit administrativen Aufgaben zu verbringen. \\
+    Neben Fotos sollen auch \textbf{Audioaufnahmen gespeichert} werden können. Hierbei können Sitzungen aufgezeichnet werden, die in Zukunft genutzt werden können, um die wichtigsten Informationen mithilfe einer KI zu extrahieren und in kurzen Worten zusammenzufassen. 
+
+
+    % --- N I C H T - F U N K T I O N A L E   A N F O R D E R U N G E N ---
+
+    \subsubsection{Nicht-funktionale Anforderungen}
+
+    Nicht-funktionale Anforderungen definieren Kriterien, die ein System erfüllen muss, um den Anforderungen der Nutzerinnen und Nutzer sowie den Qualitätsansprüchen des Projekts gerecht zu werden. 
+    Detaillierte Informationen hierzu sind im Abschnitt \ref{Nicht-funktionale Anforderungen} zu finden.
+
+    Mit Ausnahme der \textbf{Benutzerfreundlichkeit} wurden vom Auftraggeber keine weiteren nicht-funktionalen Anforderungen festgelegt. Dennoch gibt es bestimmte Eigenschaften, die vor allem bei medizinischen Anwendungen, von besonderer Bedeutung sind.
+    Ein zentraler Aspekt ist die \textbf{Performance}, die sicherstellen soll, dass alle Arbeitsabläufe reibungslos und ohne signifikante Verzögerungen ablaufen. Darüber hinaus ist die \textbf{Vertraulichkeit} von personenbezogenen Daten essenziell, um den Schutz sensibler Informationen zu gewährleisten wird. 
+    Ein weiterer wichtiger Faktor ist die \textbf{Ausfallsicherheit}. Insbesondere bei Applikationen, deren Funktionalität potenziell Auswirkungen auf die Sicherheit oder das Wohlbefinden von Menschen hat, muss sichergestellt werden, dass bei einem Fehler nicht das gesamte System abstürzt, sondern nur betroffene Teile.
+
+    In Bezug auf die Benutzerfreundlichkeit sollten folgende Punkte berücksichtigt werden:
+    \begin{itemize}
+        \item Eine leicht verständliche und selbsterklärende Benutzeroberfläche
+        \item Der/die Anwender/in soll auf bestehende Probleme hingewiesen werden
+        \item Arbeitsabläufe sollen mit minimalem Aufwand erledigt werden können
+        \item Verwendung eines einheitlichen und schlichten Farbschemas
+    \end{itemize}
+    

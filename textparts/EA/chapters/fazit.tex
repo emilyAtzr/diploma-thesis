@@ -1,0 +1,43 @@
+% --- A B S C H L U S S ---
+
+Bevor die Erkenntnisse, die im Laufe dieser Arbeit gewonnen wurden, zusammengefasst werden, soll ein letztes Mal darauf hingewiesen werden, dass die behandelten Themen bei Weitem nicht alle Teile der Softwarearchitektur abdecken.
+Das Ziel dieser Arbeit ist es, die Bedeutung der Softwarearchitektur hervorzuheben und zu vermitteln, dass sie weit mehr als nur die Implementierung von sauberem Quellcode umfasst.
+
+Softwarearchitektur befasst sich mit dem gesamten Lebenszyklus des Systems, beginnend bei der Planung bis hin zum Betrieb.
+
+
+    % --- Z U S A M M E N F A S S U N G   D E R   E R G E B N I S S E ---
+    
+    \subsection{Zusammenfassung der Ergebnisse}
+    
+    Bei der Softwarearchitektur handelt es sich nicht nur um einen Bauplan, der angibt, wie ein Softwaresystem aufgebaut ist und wie die einzelnen Bestandteile miteinander interagieren. Es ist auch ein wichtiges Instrument für die Kommunikation. Durch verschiedene Formen der Darstellung, die in Abschnitt \ref{Architekturmodellierung} näher beschrieben werden, können Grafiken erzeugt werden, die verwendet werden können, um mit verschiedenen Stakeholdern zu kommunizieren. 
+
+    Um eine Softwarearchitektur zu entwerfen, die den Wünschen der Kund/innen entspricht, spielt die Anforderungsanalyse (siehe \ref{Anforderungsanalyse}) eine entscheidende Rolle. Durch die Definition funktionaler und nicht-funktionaler Anforderungen wird festgelegt, was die Software können soll, um die Nutzer/innen zufriedenzustellen.  
+
+    Die Ergebnisse der Anforderungsanalyse dienen dabei als Entscheidungsgrundlage für den zugrundeliegenden Architekturstil (siehe \ref{Architekturstile}). Je nachdem, was die Anforderungen sind, eignen sich bestimmte Stile besser als andere, wobei auch hier jeder Stil seine Vor- und Nachteile hat.
+
+    Da sich diese Arbeit hauptsächlich auf cloudbasierte Anwendungen fokussiert, kann es von Relevanz sein, grundlegende Entwurfsmuster für die Cloud (siehe Abschnitt \ref{Entwurfsmuster für die Cloud}) zu kennen, um häufig auftretenden Problemen zu entweichen. Zudem gibt es heutzutage bereits einige Möglichkeiten, um die Entwicklung und Bereitstellung von Software zu beschleunigen. Methoden wie DevOps (siehe Abschnitt \ref{DevOps}) werden immer bedeutender und ermöglichen es, Releases schneller und einfacher zu veröffentlichen, was einen Wettbewerbsvorteil schaffen kann.
+
+    \clearpage
+
+    Blickt man nun auf die Ergebnisse des Projekts CGM MAXX LITE, so wurden alle Grundfunktionalitäten erfolgreich umgesetzt und erfüllen die Erwartungen des Auftraggebers. Die Softwarearchitektur ist so konzipiert, dass das System in Zukunft einfach erweitert und angepasst werden kann. 
+    Um für hohe Leistung zu sorgen, wurde die Kommunikation zwischen Frontend und Backend so gestaltet, dass nur notwendige Daten übertragen werden.
+    Beim gewählten Architekturstil handelt es sich um eine Microservices-Architektur, die gewährleisten soll, dass wenn ein Service ausfällt, übrige Services des Systems weiterhin zur Verfügung stehen. Dadurch ist sichergestellt, dass im Falle eines Fehlers nur bestimmte Teile des Systems vorübergehend nicht erreichbar sind.
+    Wie die Architektur aussieht, kann mithilfe des Container-Diagramms in Abbildung \ref{fig:c4-container-diagram} dargestellt werden.
+    
+    Durch das Hinzufügen einer CI/CD-Pipeline wird nach jeder Änderung am dev-Branch geprüft, ob die Applikation erfolgreich gebaut werden kann und wird anschließend am Portainer bereitgestellt, wodurch das System von überall aus getestet und dem Auftraggeber präsentiert werden kann.
+    Zusätzlich wird das Frontend durch ESLint überprüft, was in Abschnitt \ref{} genauer thematisiert wird.
+
+    Da es sich um die Entwicklung einer Arztsoftware handelt, bei der mit sensiblen Daten gearbeitet wird und Zuverlässigkeit, Fehlertoleranz sowie Sicherheit gewährleistet sein müssen, werden neben einfachen Unit-Tests auch End-To-End-Tests geschrieben, die testen, ob die Benutzeroberfläche korrekt funktioniert. Darauf wird in Kapitel \ref{} näher eingegangen.
+
+    Wie die Benutzeroberfläche der mobilen Arztsoftware schlussendlich aussieht, wird in Kapitel \ref{} gezeigt.
+    Dabei liegt der Fokus auf einer benutzerfreundlichen Oberfläche, die leicht bedient werden kann, um alltägliche Arbeitsabläufe zu beschleunigen.
+
+    
+    % --- Z U K Ü N F T I G E   E N T W I C K L U N G E N ---
+    
+    \subsection{Zukünftige Entwicklungen}
+
+    Wie bereits zu Beginn der Arbeit erwähnt, ist die Softwarearchitektur dynamisch und entwickelt sich ständig weiter, weshalb es schwierig ist vorherzusagen, wohin sich die Architektur von Software in Zukunft entwickeln wird. Dennoch ist klar, dass Cloud Computing und die zunehmende Verlagerung von Anwendungen in die Cloud eine immer zentralere Rolle spielen werden.
+
+    Trotz all dieser Veränderungen wird sich an einer Sache nichts ändern: Eine gut durchdachte Softwarearchitektur ist maßgeblich für den Erfolg eines Softwaresystems verantwortlich. Deswegen ist es wichtig, sich kontinuierlich mit neuen Technologien und Entwurfsmustern zu beschäftigen, um mit der Konkurrenz mithalten zu können.
